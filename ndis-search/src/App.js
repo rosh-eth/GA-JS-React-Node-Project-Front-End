@@ -16,11 +16,11 @@ function App() {
     <Nav />
     <Switch>
       <Route exact path={"/provider/create"} component={Create} />
-      <Route exact path={"/provider/delete"} component={Delete} />
-      <Route exact path={"/provider/edit"} component={Edit} />
+      <Route exact path={"/provider/:id/delete"} component={Delete} />
+      <Route exact path={"/provider/:id/edit"} component={Edit} />
       <Route exact path={"/provider"} component={ShowAll} />
       <Route exact path={"/provider/:id"} component={View} />
-      <Route exact path={"/"} component={Search} />
+      <Route exact path={"/"} component={ShowAll} />
 
     </Switch>
     
