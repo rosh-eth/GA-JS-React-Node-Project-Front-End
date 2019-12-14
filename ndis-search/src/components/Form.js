@@ -40,6 +40,8 @@ export class Form extends React.Component {
         // }
     }
 
+    
+
     createNewPost() {
         fetch('http://localhost:4000/api/provider/new', {
             method: 'POST',
@@ -49,6 +51,9 @@ export class Form extends React.Component {
                 address: this.state.address,
                 phone: this.state.phone,
                 email: this.state.email,
+                services: [
+
+                ]
             }),
             headers: {
                 'content-type': 'application/json'

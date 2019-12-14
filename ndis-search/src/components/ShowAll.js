@@ -26,6 +26,20 @@ export class ShowAll extends React.Component {
         })
     }
 
+    handleDeletePost = (id) => {
+        console.log("delete post id: " + id);
+
+        fetch(`http://localhost:4000/api/provider/delete/${id}`, {
+            method: 'DELETE'
+    })
+    .then(() => {
+        this.reloadPosts();
+    })
+    .catch((e) => {
+        console.log(e)
+    })
+    }
+
     render() {
         return (
             <React.Fragment>

@@ -1,10 +1,7 @@
 import React from 'react';
 import './App.css';
-import {Create} from './components/Create';
-import {Delete} from './components/Delete';
-import {Edit} from './components/Edit';
+import {Form} from './components/Form';
 import {ShowAll} from './components/ShowAll';
-import {Search} from './components/Search';
 import {View} from './components/View';
 import {Footer} from './components/Footer';
 
@@ -16,9 +13,8 @@ function App() {
   <div>
     <Nav />
     <Switch>
-      <Route exact path={"/provider/create"} component={Create} />
-      <Route exact path={"/provider/:id/delete"} component={Delete} />
-      <Route exact path={"/provider/:id/edit"} component={Edit} />
+      <Route exact path={"/provider/create"} component={Form} />
+      <Route exact path={"/provider/:id/edit"} component={Form} />
       <Route exact path={"/provider"} component={ShowAll} />
       <Route exact path={"/provider/:id"} component={View} />
       <Route exact path={"/"} component={ShowAll} />
