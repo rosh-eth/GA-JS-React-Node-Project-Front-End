@@ -1,4 +1,5 @@
 import React from 'react';
+import {Form} from './Form';
 
 export class Create extends React.Component {
     constructor (props) {
@@ -8,7 +9,7 @@ export class Create extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <p>Create Works</p>
+                <Form />
             </React.Fragment>
         )
     }
