@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import {SERVER_API} from '../consts'
 
 export class Form extends React.Component {
     constructor(props) {
@@ -31,19 +32,18 @@ export class Form extends React.Component {
         console.log('A Post was submitted: ' + JSON.stringify(this.state));
         event.preventDefault();
 
-        this.createNewPost();
-        // if(!this.props.match.params.id) {
-        //     this.createNewPost();
-        // }
-        // else {
-        //     this.updatePost();
-        // }
+        if(!this.props.match.params.edit) {
+            this.createNewPost();
+        }
+        else {
+            this.updatePost();
+        }
     }
 
     
 
     createNewPost() {
-        fetch('http://localhost:4000/api/provider/new', {
+        fetch(`${SERVER_API}/provider/new`, {
             method: 'POST',
             mode: 'cors',
             body: JSON.stringify({
@@ -69,28 +69,59 @@ export class Form extends React.Component {
             });
     }
 
+    updatePost() {
+        const id = this.props.match.params.edit;
+        
+        fetch(`${SERVER_API}/provider/update/${id}`, {
+            method: 'PUT',
+            mode: 'cors',
+            body: JSON.stringify({
+                name: this.state.name,
+                email: this.state.email,
+                address: this.state.address,
+                phone: this.state.phone,
+                services: [
 
-    // componentDidMount() {
-    //     const id = this.props.match.params.id;
+                ]
+            }),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                this.props.history.push('/');
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
 
-    //     if (id) {
-    //         this.setState({
-    //             isLoading: true
-    //         })
+    componentDidMount() {
+        const id = this.props.match.params.edit;
 
-    //         fetch(`http://localhost:4000/api/provider/find/${id}`)
-    //             .then((res) => res.json())
-    //             .then((data) => {
-    //                 console.log(data);
-    //                 this.setState({
-    //                     name: data.title,
-    //                     author: data.author,
-    //                     body: data.body,
-    //                     isLoading: false
-    //                 })
-    //             });
-    //     }
-    // }
+        if (id) {
+            this.setState({
+                isLoading: true
+            })
+
+            fetch(`${SERVER_API}/provider/find/${id}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    this.setState({
+                        name: data.name,
+                        phone: data.phone,
+                        address: data.address,
+                        email: data.email,
+                        services: [
+
+                        ]
+                    })
+                });
+        }
+    }
 
     render() {
         return (

@@ -47,7 +47,7 @@ export class View extends React.Component {
                     <div class="card">
                         <div class="card-body">
 
-                            <h5 class="card-title d-inline">{this.state.providerDetail.name}</h5><Link class="float-right" to={`/provider/${this.state.providerDetail._id}/edit`}>Edit</Link>
+                            <h5 class="card-title d-inline">{this.state.providerDetail.name}</h5><Link class="float-right" to={`/provider/edit/${this.state.providerDetail._id}`}>Edit</Link>
                             <hr />
                             <h6 class="card-subtitle">Company Details</h6>
                             <div class="card-body">

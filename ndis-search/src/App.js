@@ -14,8 +14,8 @@ function App() {
     <Nav />
     <Switch>
       <Route exact path={"/provider/create"} component={Form} />
-      <Route exact path={"/provider/:id/edit"} component={Form} />
       <Route exact path={"/provider"} component={ShowAll} />
+      <Route exact path={"/provider/edit/:edit"} component={Form} />
       <Route exact path={"/provider/:id"} component={View} />
       <Route exact path={"/"} component={ShowAll} />
 
