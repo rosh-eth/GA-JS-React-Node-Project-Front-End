@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.footer-branding {
+  background-color: #651a74;
+  color: white;
+  font-size: 10px; 
+}
+
+.branding-nav {
+  background-color: #651a74;
+  color: gold;
+}

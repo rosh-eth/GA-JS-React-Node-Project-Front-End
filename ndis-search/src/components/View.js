@@ -30,7 +30,6 @@ export class View extends React.Component {
             <React.Fragment>
                 <div class="container">
                     <Link class="btn btn-outline-primary mt-4 mb-4 mr-3" to={`/provider/`}>Back to Providers</Link>
-                    <Link class="btn btn-primary mt-4 mb-4" to={`/provider/create`}>Create</Link>
                     <div class="card">
                         <div class="card-body">
                             

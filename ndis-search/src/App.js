@@ -6,6 +6,7 @@ import {Edit} from './components/Edit';
 import {ShowAll} from './components/ShowAll';
 import {Search} from './components/Search';
 import {View} from './components/View';
+import {Footer} from './components/Footer';
 
 import {Switch, Route, Link} from "react-router-dom";
 import {Nav} from './components/Nav';
@@ -23,7 +24,7 @@ function App() {
       <Route exact path={"/"} component={ShowAll} />
 
     </Switch>
-    
+    <Footer />
   </div>
 
   );

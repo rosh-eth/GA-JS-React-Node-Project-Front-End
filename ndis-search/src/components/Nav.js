@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 export function Nav() {
-    return <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    return <nav className="navbar navbar-expand-lg navbar-dark  branding-nav">
         <Link className="navbar-brand" to="/">Karista</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -15,13 +15,7 @@ export function Nav() {
                 <li className="nav-item">
                     <Link className="nav-link" to="/provider/create">Create</Link>
                 </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/provider/edit">Edit</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/provider/delete">Delete</Link>
-                </li>
-                
+                               
             </ul>
         </div>
     </nav>
