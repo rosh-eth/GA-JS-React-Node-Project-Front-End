@@ -21,8 +21,10 @@
 - Makes use of routes where appropriate
 
 ## Run Instructions
-- React: npm run when in /ndis-search/ folder
-- Express: npx nodemon index.html in root folder
+- enter /ndis-search/ folder
+- npm install
+- npm run
+
 
 ## Issues I ran into
 - Setting up backend was initially hard to remember
