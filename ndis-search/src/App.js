@@ -8,6 +8,7 @@ import Home from './components/Home';
 
 import {Switch, Route, Link} from "react-router-dom";
 import {Nav} from './components/Nav';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

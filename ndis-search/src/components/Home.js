@@ -1,35 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
+import { Container, Form, Button } from 'react-bootstrap'
 
 const Home = () => {
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+
     const [counter, setCounter] = useState(0);
     const [banana, setBanana] = useState('')
-    const increment = () => {
-        setCounter(counter + 1);
-        setBanana("incrementing");
-    }
-    const decrement = () => {
-        setCounter(counter - 1);
-        setBanana("decrementing");
-    }
-    const reset = (event) => {
-        setCounter(parseInt(event.target.value,10))
+
+    useEffect(() => {
+        document.title = `Hi there ${userName}`;
+      });
+
+    const userInput = (event) => {
+        setUserName(event.target.value);
         
     }
 
-    const resetButton = () => {
-        setCounter(0);
-        setBanana("reset banana");
-    }
 
-    return  (
-        <div className="card">
-            <h3>{banana}</h3>
-            <h2>{counter}</h2>
-            <button classname="button" onClick={increment}>Increment</button>
-            <button classname="button" onClick={decrement}>Decrement</button>
-            <button classname="button" onClick={resetButton}>Reset</button>
-            <input onChange={reset} />
-        </div>
+    return (
+        <React.Fragment>
+            <Container>
+                <Form>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control onChange={userInput} type="email" placeholder="Enter email" />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Check me out" />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+                
+            </Container>
+        </React.Fragment>
     )
 }
 
