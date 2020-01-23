@@ -5,6 +5,7 @@ import {ShowAll} from './components/ShowAll';
 import {View} from './components/View';
 import {Footer} from './components/Footer';
 import Home from './components/Home';
+import {Login} from './components/Login'
 
 import {Switch, Route, Link} from "react-router-dom";
 import {Nav} from './components/Nav';
@@ -20,7 +21,7 @@ function App() {
       <Route exact path={"/provider/edit/:edit"} component={Form} />
       <Route exact path={"/provider/:id"} component={View} />
       <Route exact path={"/"} component={Home} />
-
+      <Route exact path={"/login"} component={Login} />
     </Switch>
     <Footer />
   </div>
