@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
+import { Container, Form, Button } from 'react-bootstrap';
+import {LoginContext} from '../App';
 
 export function Login() {
-    const [loginState, setLoginState] = useState(false);
+ 
+    const loginContext = useContext(LoginContext);
+    const {loginState, setLoginState, userProfile, setUserProfile} = loginContext;
+
     const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
-    const [userProfile, setUserProfile] = useState(null);
 
     useEffect(() => {
         queryUserStatus({}, '/api/hello');
@@ -46,42 +50,58 @@ export function Login() {
 
     const renderForm = () => {
         return (
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Username:
-                    <input type="text" value={user} onChange={(event) => setUser(event.target.value)} />
-                </label>
 
-                <label>
-                    Password:
-                    <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
-                </label>
+            <React.Fragment>
+            <Container>
+                <Form onSubmit={handleSubmit}> 
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control value={user} onChange={(event) => setUser(event.target.value)} type="email" placeholder="Enter email" />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                        </Form.Text>
+                    </Form.Group>
 
-                <input type="submit" value="Submit" />
-            </form>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Password" />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Check me out" />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+                
+            </Container>
+        </React.Fragment>
         )
     }
 
-    const handleLogOut = () => {
-        fetch('/auth/logout').then((res) => {
-            setLoginState(false);
-         })
-        };
+    // const handleLogOut = () => {
+    //     fetch('/auth/logout').then((res) => {
+    //         setLoginState(false);
+    //      })
+    //     };
         
-    const renderLoggedIn = () => {
-        return <div>
-            <p>You are logged in {userProfile.profile.name}</p>
+    // const renderLoggedIn = () => {
+    //     return <React.Fragment>
+        
+    //         <p>You are logged in {userProfile.profile.name}</p>
 
-            <button type="submit" onClick={() => handleLogOut()}>Logout</button>
-        </div>
-    }
+    //         <Button type="submit" onClick={() => handleLogOut()}>Logout</Button>
+            
+    //         </React.Fragment>
+    // }
 
     return (
-        <div>
+        <React.Fragment>
+            <Container>
             {!loginState && renderForm()}
-            {loginState && renderLoggedIn()}
-            <p>Auth comp works</p>
-        </div>
+            {/* {loginState && renderLoggedIn()} */}
+            </Container>
+            </React.Fragment>
     )
 }
 
