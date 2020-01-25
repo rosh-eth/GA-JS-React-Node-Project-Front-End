@@ -20,11 +20,6 @@ const Home = () => {
         
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    
-        }
-
     const handleLogIn = (username, password) => {
         
             console.log("Logging in: ", username, password);
